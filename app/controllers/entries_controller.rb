@@ -6,8 +6,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
-    # とりあえずはランダムで名言を選びます
-    meigen = Meigen.sample
+    meigen = Meigen.search(entry_params[:content]) || Meigen.sample
     @entry.image_url = meigen.image_url
     if @entry.save
       flash[:notice] = '投稿しました!'

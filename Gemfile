@@ -43,3 +43,5 @@ group :development, :test do
   gem "pry-byebug"
   gem "rspec-rails"
 end
+
+gem 'natto'
