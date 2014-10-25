@@ -11,11 +11,10 @@ class EntriesController < ApplicationController
     @entry.image_url = meigen.image_url
     if @entry.save
       flash[:notice] = '投稿しました!'
-      redirect_to :root
     else
-      flash[:error].now = '投稿に失敗しました!'
-      render :index
+      flash[:error] = '投稿に失敗しました!'
     end
+    redirect_to :root
   end
 
   private
