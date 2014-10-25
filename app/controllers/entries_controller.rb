@@ -1,7 +1,8 @@
 class EntriesController < ApplicationController
+  before_action :set_entries
+
   def index
     @entry = Entry.new
-    @entries = Entry.order('created_at DESC').page(params[:page])
   end
 
   def create
@@ -12,7 +13,7 @@ class EntriesController < ApplicationController
       flash[:notice] = '投稿しました!'
       redirect_to :root
     else
-      flash[:error] = '投稿に失敗しました!'
+      flash[:error].now = '投稿に失敗しました!'
       render :index
     end
   end
@@ -20,5 +21,9 @@ class EntriesController < ApplicationController
   private
   def entry_params
     params.require(:entry).permit(:content)
+  end
+
+  def set_entries
+    @entries = Entry.order('created_at DESC').page(params[:page])
   end
 end
