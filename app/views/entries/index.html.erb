@@ -1,3 +1,5 @@
+<%= paginate @entries %>
+
 <% if message = (flash[:notice] || flash[:error]) %>
   <p><%= message %></p>
 <% end %>
@@ -11,3 +13,5 @@
   <p><%= entry.content %></p>
   <%= image_tag entry.image_url %>
 <% end %>
+
+

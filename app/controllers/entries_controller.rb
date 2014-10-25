@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   def index
     @entry = Entry.new
-    @entries = Entry.order('created_at DESC') # 本当はページングしたい
+    @entries = Entry.order('created_at DESC').page(params[:page])
   end
 
   def create
