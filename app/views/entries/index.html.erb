@@ -1,1 +1,13 @@
-<p>Hello!</p>
+<% if message = (flash[:notice] || flash[:error]) %>
+  <p><%= message %></p>
+<% end %>
+
+<%= form_for @entry do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<% @entries.each do |entry| %>
+  <p><%= entry.content %></p>
+  <%= image_tag entry.image_url %>
+<% end %>
